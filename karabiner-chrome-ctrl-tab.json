@@ -1,0 +1,26 @@
+{
+  "title": "Chrome: Ctrl+Tab no estilo VS Code",
+  "rules": [
+    {
+      "description": "Chrome: Ctrl+Tab -> Ctrl+Q e Ctrl+Shift+Tab -> Ctrl+Shift+Q (extensão VS Code Tab Switcher)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "tab", "modifiers": { "mandatory": ["control", "shift"] } },
+          "to": [{ "key_code": "q", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$"] }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "tab", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "q", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.google\\.Chrome$"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

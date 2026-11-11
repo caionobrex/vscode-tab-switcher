@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "VS Code Tab Switcher (MRU)",
+  "version": "1.2.0",
+  "description": "Alterna entre abas na ordem de uso recente, como o Ctrl+Tab do VS Code.",
+  "permissions": ["storage", "scripting", "tabs", "favicon"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["_favicon/*"], "matches": ["<all_urls>"] }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "mru-next": {
+      "suggested_key": { "default": "Alt+Q", "mac": "MacCtrl+Q" },
+      "description": "Ir para a aba usada mais recentemente (avança na lista)"
+    },
+    "mru-prev": {
+      "suggested_key": { "default": "Alt+Shift+Q", "mac": "MacCtrl+Shift+Q" },
+      "description": "Voltar na lista de abas recentes"
+    }
+  }
+}
